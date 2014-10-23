@@ -1,22 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 def toBase(num, base):
 	list = []
 	while num > 0:
-		if (num % base) == 0:
-			list.append(0)
-		else:
-			list.append(num % base)
+		list.append(num % base)
 		num//=base
 	return int(''.join(map(str, list[::-1])))
-
-#def toBase(num, base):
-#	list = []
-#	while num > 0:
-#		list.append(num % base)
-#		num//=base
-#	return int(''.join(map(str, list[::-1])))
-
 
 #la ligne ci-dessus correspond à ceci en plus compact :
 #(supposons que list contient [3, 2, 1])
@@ -26,11 +16,11 @@ def toBase(num, base):
 #return s
 
 def toDec(nStr, base):
-	n = 0
-	j = 0
+	n, j = 0, 0
 	for i in nStr:
 		n += int(i)*base**(len(nStr)-j-1) #i * base^place du chiffre dans le nombre
 		j += 1
 	return n
 
-print(toBase(2, 2))
+print(toBase(256, 2))
+print(toDec("100000000", 2))
